@@ -35,7 +35,7 @@ namespace MyBlog.Controllers
                 _context?.SaveChanges();
 
                 // Redirect to Index on success
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index");
 
             }
             // If validation fails show post again

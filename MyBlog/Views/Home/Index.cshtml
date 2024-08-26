@@ -10,6 +10,9 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Hello World</title>
 
+</head>
+<body>
+
 	@foreach(var post in Model)
 	{
 		<h1>@post.Title</h1>
@@ -29,10 +32,7 @@
 
 
 	}
-
-</head>
-<body>
-
+				<a asp-action="Create" asp-controller="BlogPost">Create a new post</a>
 	
 </body>
 </html>
