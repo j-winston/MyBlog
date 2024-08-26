@@ -131,3 +131,12 @@
 /home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/tr/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/zh-Hans/Microsoft.CodeAnalysis.Workspaces.resources.dll
 /home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/zh-Hant/Microsoft.CodeAnalysis.Workspaces.resources.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/obj/Debug/net8.0/MyBlog.sourcelink.json
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.Internal.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.Extensions.Identity.Core.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.Extensions.Identity.Stores.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/bin/Debug/net8.0/Microsoft.Extensions.Options.dll
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/obj/Debug/net8.0/MyBlog.RazorAssemblyInfo.cache
+/home/james/Documents/Code/Projects/MyBlog/MyBlog/obj/Debug/net8.0/MyBlog.RazorAssemblyInfo.cs

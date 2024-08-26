@@ -1,4 +1,6 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+using MyBlog.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,8 +12,25 @@ builder.Services.AddDbContext<ApplicationDbContext>(
         });
 
 
+
+builder.Services.AddIdentity<IdentityUser, IdentityRole>()
+    .AddEntityFrameworkStores<ApplicationDbContext>()
+    .AddDefaultTokenProviders();
+
+builder.Services.ConfigureApplicationCookie(options =>
+        {
+            options.LoginPath = "/Account/Login";
+            options.AccessDeniedPath = "/Account/AccessDenied";
+        });
+
+builder.Services.AddControllersWithViews();
+
 var app = builder.Build();
-app.MapGet("/", () => "hello world");
+
+app.UseAuthentication();
+app.UseAuthorization();
+
+app.MapDefaultControllerRoute();
 
 app.UseStaticFiles();
 

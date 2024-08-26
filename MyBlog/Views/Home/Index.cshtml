@@ -1,0 +1,38 @@
+@model IEnumerable<MyBlog.Models.Post> 
+@{
+	Layout = null; 
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Hello World</title>
+
+	@foreach(var post in Model)
+	{
+		<h1>@post.Title</h1>
+		<h3>@post.AuthoredDate</h3>
+		<p>@post.Content</p>
+			@if(post.Author != null)
+			{
+				<p>@post.Author.Email</p>
+				<p>@post.Author.UserName</p>
+				@foreach(var comment in post.Comments)
+				{
+					<p>@comment.Content</p>
+				
+				}
+
+			}
+
+
+	}
+
+</head>
+<body>
+
+	
+</body>
+</html>
