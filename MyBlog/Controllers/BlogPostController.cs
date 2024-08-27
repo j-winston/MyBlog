@@ -5,13 +5,23 @@ namespace MyBlog.Controllers
 {
     public class BlogPostController : Controller
     {
-        // TODO: create field for database context
-        private ApplicationDbContext? _context;
+        private ApplicationDbContext _context;
+
+        private User _testUser = new User
+        {
+            UserName = "James",
+            Email = "kenjameswinston@gmail.com",
+            PasswordHash = "null",
+            CreationDate = DateTime.Today
+
+        };
+
 
         // TODO: Inject ApplicationDbContext to interact with database 
         public BlogPostController(ApplicationDbContext context)
         {
             _context = context;
+
         }
 
 
@@ -23,23 +33,40 @@ namespace MyBlog.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Post blogPost)
+        public IActionResult Create(Post testPost)
         {
-            if (ModelState.IsValid)
+
+            if (ModelState.IsValid && _testUser != null)
             {
-                blogPost.AuthoredDate = DateTime.Now;
+                // Add author and date
+                testPost.Author = _testUser;
+                testPost.AuthoredDate = DateTime.Today;
 
-                _context?.Posts.Add(blogPost);
+                // Add posts
+                _testUser.BlogPosts = new List<Post>();
+                _testUser.BlogPosts.Add(testPost);
 
-                // save changes to the database
-                _context?.SaveChanges();
+                // Add comments 
+                Comment comment = new Comment
+                {
+                    Content = "Bro, this is hot.",
+                    DatePosted = DateTime.Today,
+                    Author = _testUser
+
+                };
+
+                // add to database
+                _context.Posts.Add(testPost);
+
+                // save
+                _context.SaveChanges();
 
                 // Redirect to Index on success
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Home");
 
             }
             // If validation fails show post again
-            return View(blogPost);
+            return View();
         }
 
     }
