@@ -69,6 +69,35 @@ namespace MyBlog.Controllers
             return View();
         }
 
+        public IActionResult Delete(int Id)
+        {
+            Post? post = _context.Posts.Where(p => p.ID == Id).FirstOrDefault();
+
+            if (post != null)
+            {
+                List<Comment>? commentsToDelete = post.Comments;
+
+                if (commentsToDelete != null)
+                {
+                    _context.Comments.RemoveRange(commentsToDelete);
+
+                    _context.SaveChanges();
+
+                }
+
+                _context.Posts.Remove(post);
+                _context.SaveChanges();
+
+                return RedirectToAction("Index", "Home");
+
+
+            }
+
+            return RedirectToAction("Create", "BlogPost");
+
+
+        }
+
     }
 }
 
