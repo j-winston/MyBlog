@@ -69,35 +69,74 @@ namespace MyBlog.Controllers
             return View();
         }
 
-        public IActionResult Delete(int Id)
+        public IActionResult Delete(int? id)
         {
-            Post? post = _context.Posts.Where(p => p.ID == Id).FirstOrDefault();
-
-            if (post != null)
+            if (id != null)
             {
-                List<Comment>? commentsToDelete = post.Comments;
+                Post? post = _context.Posts.Where(p => p.ID == id).FirstOrDefault();
 
-                if (commentsToDelete != null)
+                if (post != null)
                 {
-                    _context.Comments.RemoveRange(commentsToDelete);
+                    List<Comment>? commentsToDelete = post.Comments;
 
+                    if (commentsToDelete != null)
+                    {
+                        _context.Comments.RemoveRange(commentsToDelete);
+
+                        _context.SaveChanges();
+
+                    }
+
+                    _context.Posts.Remove(post);
                     _context.SaveChanges();
 
+                    return RedirectToAction("Index", "Home");
                 }
-
-                _context.Posts.Remove(post);
-                _context.SaveChanges();
-
-                return RedirectToAction("Index", "Home");
-
-
             }
 
             return RedirectToAction("Create", "BlogPost");
 
+        }
+
+
+        public IActionResult Update(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            Post? post = _context.Posts.Find(id);
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            return View(post);
 
         }
 
+
+        [HttpPost]
+        public IActionResult Update(Post post)
+        {
+
+            if (post == null)
+            {
+                return NotFound();
+            }
+
+            post.Author = _testUser;
+
+            _context.Posts.Update(post);
+            _context.SaveChanges();
+
+            return RedirectToAction("Index", "Home");
+        }
+
+
     }
+
 }
+
 

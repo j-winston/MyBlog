@@ -27,12 +27,15 @@
 					<p>@comment.Content</p>
 				}
 					<a asp-action="Delete" asp-controller="BlogPost" asp-route-id="@post.ID">Delete post</a>
+					<a asp-action="Update" asp-controller="BlogPost" asp-route-id="@post.ID">Edit post</a>
 
 			}
 
 
 	}
 				<a asp-action="Create" asp-controller="BlogPost">Create a new post</a>
+
+				
 
 	
 </body>
