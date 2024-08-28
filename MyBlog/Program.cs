@@ -11,7 +11,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
-
+builder.Services.AddServerSideBlazor();
 
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
@@ -29,6 +29,9 @@ var app = builder.Build();
 
 app.UseAuthentication();
 app.UseAuthorization();
+
+app.MapBlazorHub();
+app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 app.MapDefaultControllerRoute();
 
