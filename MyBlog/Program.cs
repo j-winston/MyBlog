@@ -4,6 +4,7 @@ using MyBlog.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(
         options =>
@@ -11,11 +12,15 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
-builder.Services.AddServerSideBlazor();
-
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>()
     .AddDefaultTokenProviders();
+
+builder.Services.AddRazorPages();
+
+builder.Services.AddSession();
+builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+builder.Services.AddServerSideBlazor();
 
 builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -23,19 +28,20 @@ builder.Services.ConfigureApplicationCookie(options =>
             options.AccessDeniedPath = "/Account/AccessDenied";
         });
 
-builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
+
+app.UseStaticFiles();
+app.UseSession();
+
+app.MapDefaultControllerRoute();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapRazorPages();
 app.MapBlazorHub();
 app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
-
-app.MapDefaultControllerRoute();
-
-app.UseStaticFiles();
 
 app.Run();
 
