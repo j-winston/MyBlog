@@ -20,20 +20,9 @@ namespace MyBlog.Controllers
         // Define actions
         public ViewResult Index()
         {
-
-            IEnumerable<Post> allPosts = _context.Posts.Include(p => p.Author)
-                .Include(p => p.Comments)
-                .ToList();
-
-            if (allPosts != null)
-            {
-                return View(allPosts);
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
+
     }
 
 

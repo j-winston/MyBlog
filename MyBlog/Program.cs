@@ -12,9 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(
             options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"));
         });
 
+builder.Services.AddDbContext<IdentityContext>(
+        options =>
+        {
+            options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+        });
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-    .AddEntityFrameworkStores<ApplicationDbContext>()
-    .AddDefaultTokenProviders();
+.AddEntityFrameworkStores<IdentityContext>();
 
 builder.Services.AddRazorPages();
 
@@ -39,7 +43,6 @@ app.MapDefaultControllerRoute();
 
 app.UseAuthentication();
 app.UseAuthorization();
-
 
 app.MapBlazorHub();
 app.MapRazorPages();
