@@ -20,6 +20,7 @@ builder.Services.AddRazorPages();
 
 builder.Services.AddSession();
 builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
 builder.Services.AddServerSideBlazor();
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -39,8 +40,9 @@ app.MapDefaultControllerRoute();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapRazorPages();
+
 app.MapBlazorHub();
+app.MapRazorPages();
 app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 app.Run();
