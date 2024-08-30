@@ -22,7 +22,6 @@ namespace MyBlog.Controllers
         {
             return View();
         }
-
     }
 
 

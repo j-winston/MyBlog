@@ -1,3 +1,5 @@
+using Microsoft.AspNetCore.Identity;
+
 namespace MyBlog.Models
 {
     public class Comment
@@ -5,7 +7,7 @@ namespace MyBlog.Models
         public int ID { get; set; }
         public string? Content { get; set; }
         public DateTime? DatePosted { get; set; }
-        public User? Author { get; set; }
+        public IdentityUser? Author { get; set; }
 
 
 

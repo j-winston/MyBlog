@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
 
@@ -17,7 +18,6 @@ namespace MyBlog.Controllers
         };
 
 
-        // TODO: Inject ApplicationDbContext to interact with database 
         public BlogPostController(ApplicationDbContext context)
         {
             _context = context;
@@ -25,7 +25,6 @@ namespace MyBlog.Controllers
         }
 
 
-        // TODO: Create action to handle GET requests to display the form for 
         [HttpGet]
         public IActionResult Create()
         {
@@ -33,18 +32,19 @@ namespace MyBlog.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Post testPost)
+        [Authorize]
+        public IActionResult Create(Post post)
         {
 
-            if (ModelState.IsValid && _testUser != null)
+
+            if (ModelState.IsValid)
             {
                 // Add author and date
-                testPost.Author = _testUser;
-                testPost.AuthoredDate = DateTime.Today;
+                post.AuthoredDate = DateTime.Today;
 
                 // Add posts
                 _testUser.BlogPosts = new List<Post>();
-                _testUser.BlogPosts.Add(testPost);
+                _testUser.BlogPosts.Add(post);
 
                 // Add comments 
                 Comment comment = new Comment
@@ -56,7 +56,7 @@ namespace MyBlog.Controllers
                 };
 
                 // add to database
-                _context.Posts.Add(testPost);
+                _context.Posts.Add(post);
 
                 // save
                 _context.SaveChanges();

@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
 using MyBlog.Models;
+using MyBlog.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,9 +24,9 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 builder.Services.AddRazorPages();
 
 builder.Services.AddSession();
-builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+//builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 
-builder.Services.AddServerSideBlazor();
+//builder.Services.AddServerSideBlazor();
 
 builder.Services.ConfigureApplicationCookie(options =>
         {
@@ -33,6 +34,8 @@ builder.Services.ConfigureApplicationCookie(options =>
             options.AccessDeniedPath = "/Account/AccessDenied";
         });
 
+
+builder.Services.AddScoped<AuthenticationService>();
 
 var app = builder.Build();
 
@@ -44,9 +47,9 @@ app.MapDefaultControllerRoute();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapBlazorHub();
+//app.MapBlazorHub();
 app.MapRazorPages();
-app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
+//app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
 app.Run();
 

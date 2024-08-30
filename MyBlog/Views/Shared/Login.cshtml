@@ -1,0 +1,25 @@
+@{ Layout = null; }
+@model MyBlog.Models.LoginViewModel
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Login</title>
+</head>
+<body>
+		<div>
+			<form asp-action="Login" >
+				<label asp-for="Email"></label>
+				<input asp-for="Email"/>
+
+				<label asp-for="Password"></label>
+				<input asp-for="Password"/>
+			<button type="submit">Log In</button>
+			</form>
+		</div>
+	
+</body>
+</html>
