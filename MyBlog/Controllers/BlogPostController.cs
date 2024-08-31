@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
+using MyBlog.Services;
 
 namespace MyBlog.Controllers
 {
@@ -26,6 +27,7 @@ namespace MyBlog.Controllers
 
 
         [HttpGet]
+        [Authorize]
         public IActionResult Create()
         {
             return View();
@@ -69,6 +71,7 @@ namespace MyBlog.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Delete(int? id)
         {
             if (id != null)
@@ -99,6 +102,7 @@ namespace MyBlog.Controllers
         }
 
 
+        [Authorize]
         public IActionResult Update(int? id)
         {
             if (id == null)
@@ -117,6 +121,7 @@ namespace MyBlog.Controllers
         }
 
 
+        [Authorize]
         [HttpPost]
         public IActionResult Update(Post post)
         {
@@ -133,6 +138,18 @@ namespace MyBlog.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [Authorize]
+        public IActionResult AdminPanel()
+        {
+
+
+            return View();
+
+
+
+        }
+
 
 
     }

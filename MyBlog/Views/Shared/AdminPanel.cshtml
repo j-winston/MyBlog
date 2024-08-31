@@ -1,0 +1,23 @@
+@model MyBlog.Models.ListModel
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Admin Panel</title>
+		<h2>Users are listed Below:</h2>
+
+
+
+
+</head>
+<body>
+			
+		@foreach(var user in Model.Users)
+			{
+				<p>@user.UserName</p>
+			}
+	
+</body>
+</html>

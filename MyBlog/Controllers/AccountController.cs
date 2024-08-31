@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
 using MyBlog.Services;
@@ -29,19 +30,54 @@ namespace MyBlog.Controllers
 
             if (result.Succeeded)
             {
-                return Redirect("Admin");
+                return Redirect("/BlogPost/AdminPanel");
             }
 
 
             return View();
         }
 
-        [HttpPost]
-        public void RegisterNewUser(LoginViewModel model)
+        [HttpGet]
+        public IActionResult Register()
         {
+            return View();
+
 
         }
 
+        [HttpPost]
+        public async Task<IActionResult> Register(LoginViewModel model)
+        {
+            IdentityResult result = await _authService.RegisterUserAsync(model);
+
+            if (result.Succeeded)
+            {
+                return Redirect("/BlogPost/AdminPanel");
+            }
+
+            foreach (IdentityError err in result.Errors)
+            {
+                ModelState.AddModelError("", err.Description);
+
+            }
+
+            return View();
+
+
+
+        }
+
+        [Authorize]
+        public IActionResult AdminPanel()
+        {
+            ListModel model = new ListModel();
+
+            model.Users = _authService.GetUsers();
+
+            return View(model);
+
+
+        }
 
 
 

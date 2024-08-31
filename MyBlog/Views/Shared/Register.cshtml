@@ -1,0 +1,24 @@
+@model MyBlog.Models.LoginViewModel
+@{ Layout = null; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Register User</title>
+</head>
+<body>
+		<h1>Register New User </h1>
+		<div asp-validation-summary="All">
+		<form asp-action="Register">
+			<label asp-for="Email">Email: </label>
+			<input asp-for="Email">
+			<label asp-for="Password">Password: </label>
+			<input asp-for="Password">
+
+			<button type="submit">Register</button> </form>
+	
+		</div>
+</body>
+</html>
