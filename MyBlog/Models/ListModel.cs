@@ -6,11 +6,14 @@ namespace MyBlog.Models
     // Used to display all users in the AdminPanel view
     public class ListModel
     {
-        public IEnumerable<IdentityUser> Users { get; set; }
+        //public IEnumerable<IdentityUser> Users { get; set; }
+        public IEnumerable<Post> Posts { get; set; }
+        public IdentityUser? User { get; set; }
 
         public ListModel()
         {
-            Users = Enumerable.Empty<IdentityUser>();
+            Posts = Enumerable.Empty<Post>();
+
         }
 
 

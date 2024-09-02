@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Panel</title>
-		<h2>Users are listed Below:</h2>
+		<h2>@Model.User.UserName</h2>
 
 
 
@@ -14,10 +14,16 @@
 </head>
 <body>
 			
-		@foreach(var user in Model.Users)
-			{
-				<p>@user.UserName</p>
-			}
+
+		<h1> Create New Post </h1>
+		<!--- There should be only a single logged in admin and Model.Posts should show all posts send id-->
+		<a asp-controller="BlogPost" asp-action="CreatePost">Create new post</a>
+
+		@foreach(var post in @Model.Posts)
+		{
+			<p>@post.Content</p>
+			<p>@post.Title</p>
+		}
 	
 </body>
 </html>

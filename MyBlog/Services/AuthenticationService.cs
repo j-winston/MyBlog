@@ -9,14 +9,16 @@ namespace MyBlog.Services
     {
         private UserManager<IdentityUser> _userManager;
         private SignInManager<IdentityUser> _signInManager;
+        private IHttpContextAccessor _httpContextAccessor;
 
         public IEnumerable<IdentityUser> Users { get; set; }
         = Enumerable.Empty<IdentityUser>();
 
-        public AuthenticationService(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public AuthenticationService(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<IdentityResult> RegisterUserAsync(LoginViewModel model)
@@ -52,6 +54,17 @@ namespace MyBlog.Services
             return Users;
         }
 
+        public async Task<IdentityUser?> GetLoggedInUser()
+        {
+            var user = _httpContextAccessor.HttpContext?.User;
+
+            if (user == null)
+            {
+                return null;
+            }
+
+            return await _userManager.GetUserAsync(user);
+        }
     }
 
 

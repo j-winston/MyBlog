@@ -2,74 +2,49 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
 using MyBlog.Services;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
+
 
 namespace MyBlog.Controllers
 {
     public class BlogPostController : Controller
     {
         private ApplicationDbContext _context;
-
-        private User _testUser = new User
-        {
-            UserName = "James",
-            Email = "kenjameswinston@gmail.com",
-            PasswordHash = "null",
-            CreationDate = DateTime.Today
-
-        };
+        private AuthenticationService _authService;
 
 
-        public BlogPostController(ApplicationDbContext context)
+        public BlogPostController(ApplicationDbContext context, AuthenticationService authService)
         {
             _context = context;
-
+            _authService = authService;
         }
 
 
         [HttpGet]
         [Authorize]
-        public IActionResult Create()
+        public IActionResult CreatePost()
         {
             return View();
+
         }
 
         [HttpPost]
         [Authorize]
-        public IActionResult Create(Post post)
+        public async Task<IActionResult> CreatePost(CreatePostModel model)
         {
-
 
             if (ModelState.IsValid)
             {
-                // Add author and date
-                post.AuthoredDate = DateTime.Today;
+                return View();
 
-                // Add posts
-                _testUser.BlogPosts = new List<Post>();
-                _testUser.BlogPosts.Add(post);
 
-                // Add comments 
-                Comment comment = new Comment
-                {
-                    Content = "Bro, this is hot.",
-                    DatePosted = DateTime.Today,
-                    Author = _testUser
-
-                };
-
-                // add to database
-                _context.Posts.Add(post);
-
-                // save
-                _context.SaveChanges();
-
-                // Redirect to Index on success
-                return RedirectToAction("Index", "Home");
 
             }
-            // If validation fails show post again
+
             return View();
         }
+
 
         [Authorize]
         public IActionResult Delete(int? id)
@@ -80,15 +55,7 @@ namespace MyBlog.Controllers
 
                 if (post != null)
                 {
-                    List<Comment>? commentsToDelete = post.Comments;
 
-                    if (commentsToDelete != null)
-                    {
-                        _context.Comments.RemoveRange(commentsToDelete);
-
-                        _context.SaveChanges();
-
-                    }
 
                     _context.Posts.Remove(post);
                     _context.SaveChanges();
@@ -121,6 +88,7 @@ namespace MyBlog.Controllers
         }
 
 
+
         [Authorize]
         [HttpPost]
         public IActionResult Update(Post post)
@@ -131,25 +99,11 @@ namespace MyBlog.Controllers
                 return NotFound();
             }
 
-            post.Author = _testUser;
-
             _context.Posts.Update(post);
             _context.SaveChanges();
 
             return RedirectToAction("Index", "Home");
         }
-
-        [Authorize]
-        public IActionResult AdminPanel()
-        {
-
-
-            return View();
-
-
-
-        }
-
 
 
     }

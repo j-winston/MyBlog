@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace MyBlog.Migrations.Identity
+namespace MyBlog.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration

@@ -9,10 +9,10 @@ using MyBlog.Models;
 
 #nullable disable
 
-namespace MyBlog.Migrations.Identity
+namespace MyBlog.Migrations
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20240829210932_Initial")]
+    [Migration("20240902211811_Initial")]
     partial class Initial
     {
         /// <inheritdoc />

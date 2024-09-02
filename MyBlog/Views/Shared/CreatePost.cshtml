@@ -1,4 +1,4 @@
-@model MyBlog.Models.Post
+@model CreatePostModel 
 @{
 	Layout=null;
 }
@@ -15,7 +15,8 @@
 	
 <h2>Create a New Blog Post</h2>
 
-<form asp-action="Create">
+<!--- expects a model object -->
+<form asp-action="CreatePost">
 	<div class="form-group">
 		<label asp-for="Title"></label>
 		<input asp-for="Title"/>

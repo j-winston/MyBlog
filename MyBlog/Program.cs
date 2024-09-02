@@ -21,6 +21,7 @@ builder.Services.AddDbContext<IdentityContext>(
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<IdentityContext>();
 
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddSession();
@@ -30,14 +31,21 @@ builder.Services.AddSession();
 
 builder.Services.ConfigureApplicationCookie(options =>
         {
-            options.LoginPath = "/";
+            options.LoginPath = "/Login";
             options.AccessDeniedPath = "/Account/AccessDenied";
         });
 
 
 builder.Services.AddScoped<AuthenticationService>();
+builder.Services.AddHttpContextAccessor();
 
 var app = builder.Build();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    await SeedData.Initialize(services);
+}
 
 app.UseStaticFiles();
 app.UseSession();

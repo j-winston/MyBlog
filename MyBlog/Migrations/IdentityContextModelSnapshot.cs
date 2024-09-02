@@ -8,7 +8,7 @@ using MyBlog.Models;
 
 #nullable disable
 
-namespace MyBlog.Migrations.Identity
+namespace MyBlog.Migrations
 {
     [DbContext(typeof(IdentityContext))]
     partial class IdentityContextModelSnapshot : ModelSnapshot

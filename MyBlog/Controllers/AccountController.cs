@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using MyBlog.Models;
 using MyBlog.Services;
+using Microsoft.EntityFrameworkCore;
 
 
 namespace MyBlog.Controllers
@@ -10,10 +11,12 @@ namespace MyBlog.Controllers
     public class AccountController : Controller
     {
         private readonly AuthenticationService _authService;
+        private readonly ApplicationDbContext _context;
 
-        public AccountController(AuthenticationService authService)
+        public AccountController(AuthenticationService authService, ApplicationDbContext context)
         {
             _authService = authService;
+            _context = context;
         }
 
         [HttpGet]
@@ -30,7 +33,7 @@ namespace MyBlog.Controllers
 
             if (result.Succeeded)
             {
-                return Redirect("/BlogPost/AdminPanel");
+                return Redirect("AdminPanel");
             }
 
 
@@ -52,7 +55,7 @@ namespace MyBlog.Controllers
 
             if (result.Succeeded)
             {
-                return Redirect("/BlogPost/AdminPanel");
+                return Redirect("AdminPanel");
             }
 
             foreach (IdentityError err in result.Errors)
@@ -68,11 +71,29 @@ namespace MyBlog.Controllers
         }
 
         [Authorize]
-        public IActionResult AdminPanel()
+        public async Task<IActionResult> AdminPanel()
         {
-            ListModel model = new ListModel();
 
-            model.Users = _authService.GetUsers();
+            // Assign logged in user to current list model 
+            var user = await _authService.GetLoggedInUser();
+
+            if (user == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
+            var posts = await _context.Posts
+                 .Include(p => p.Author)
+                 .Where(p => p.AuthorId == user.Id)
+                 .ToListAsync();
+
+
+            ListModel model = new ListModel()
+            {
+                User = user,
+                Posts = posts
+            };
+
 
             return View(model);
 
