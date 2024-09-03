@@ -33,16 +33,25 @@ namespace MyBlog.Controllers
         [Authorize]
         public async Task<IActionResult> CreatePost(CreatePostModel model)
         {
+            var loggedInUser = await _authService.GetLoggedInUser();
 
-            if (ModelState.IsValid)
+            var post = new Post()
             {
-                return View();
+                Title = model.Title,
+                Content = model.Content,
+                AuthorId = loggedInUser.Id,
+                AuthoredDate = DateTime.Today
+
+            };
+
+            Console.WriteLine("<>><<<<<<");
+            _context.Posts.Add(post);
+
+            _context.SaveChanges();
+
+            return RedirectToAction("AdminPanel", "Account");
 
 
-
-            }
-
-            return View();
         }
 
 

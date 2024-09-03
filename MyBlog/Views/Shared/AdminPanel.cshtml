@@ -23,6 +23,8 @@
 		{
 			<p>@post.Content</p>
 			<p>@post.Title</p>
+			<a asp-controller="BlogPost" asp-action"Update">Update </a>
+			<a asp-controller="BlogPost" asp-action"Delete" asp-routing-id="@post.ID">Delete </a>
 		}
 	
 </body>
