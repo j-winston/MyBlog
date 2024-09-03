@@ -100,6 +100,14 @@ namespace MyBlog.Controllers
 
         }
 
+        [Authorize]
+        public async Task<IActionResult> Logout()
+        {
+            await _authService.LogoutUserAsync();
+
+            return RedirectToAction("Index", "Home");
+        }
+
 
 
 
