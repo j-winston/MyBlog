@@ -101,7 +101,7 @@ namespace MyBlog.Controllers
             // get original post 
             if (post != null)
             {
-                var postDb = _context.Posts.Where(p => p.ID == post.ID).FirstOrDefault();
+                var postDb = _context.Posts?.Where(p => p.ID == post.ID).FirstOrDefault();
 
                 if (postDb != null)
                 {
@@ -111,10 +111,13 @@ namespace MyBlog.Controllers
 
                     // save changes to db 
                     _context.SaveChanges();
+
+                    return RedirectToAction("AdminPanel", "Account");
                 }
             }
 
-            return RedirectToAction("AdminPanel", "Account");
+            return View();
+
 
         }
 
