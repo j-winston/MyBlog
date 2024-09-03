@@ -44,7 +44,6 @@ namespace MyBlog.Controllers
 
             };
 
-            Console.WriteLine("<>><<<<<<");
             _context.Posts.Add(post);
 
             _context.SaveChanges();
@@ -79,18 +78,15 @@ namespace MyBlog.Controllers
 
 
         [Authorize]
-        public IActionResult Update(int? id)
+        public async Task<IActionResult> Update(int? id)
         {
             if (id == null)
             {
                 return NotFound();
             }
 
-            Post? post = _context.Posts.Find(id);
-            if (post == null)
-            {
-                return NotFound();
-            }
+            Post? post = _context.Posts.Where(p => p.ID == id).FirstOrDefault();
+
 
             return View(post);
 
@@ -100,18 +96,26 @@ namespace MyBlog.Controllers
 
         [Authorize]
         [HttpPost]
-        public IActionResult Update(Post post)
+        public async Task<IActionResult> Update(Post post)
         {
-
-            if (post == null)
+            // get original post 
+            if (post != null)
             {
-                return NotFound();
+                var postDb = _context.Posts.Where(p => p.ID == post.ID).FirstOrDefault();
+
+                if (postDb != null)
+                {
+                    // update content and title 
+                    postDb.Content = post.Content;
+                    postDb.Title = post.Title;
+
+                    // save changes to db 
+                    _context.SaveChanges();
+                }
             }
 
-            _context.Posts.Update(post);
-            _context.SaveChanges();
+            return RedirectToAction("AdminPanel", "Account");
 
-            return RedirectToAction("Index", "Home");
         }
 
 
