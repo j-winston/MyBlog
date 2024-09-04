@@ -127,3 +127,23 @@ body {
 .logo-text {
   font-size: .9rem;
 }
+
+
+.content-container {
+  display: flex;
+  align-items: start;
+  flex-direction: column;
+}
+
+.content-container-detail-view {
+  width: 90vw;
+}
+
+
+.footer-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 40px;
+
+}
