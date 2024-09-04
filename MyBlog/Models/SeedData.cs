@@ -45,21 +45,21 @@ namespace MyBlog.Models
                 new Post
 
                 {
-                    Title = "First Post",
-                    Content = "This is a the content of the second post.",
+                    Title = "Why I Keep Going Back to Neovim",
+                    Content = "Neovim is strangely carthartic to me",
                     AuthoredDate = DateTime.Now,
                     Author = defaultUser,
                     AuthorId = defaultUser.Id,
-                    Slug = SlugHelper.GenerateSlug("First Post")
+                    Slug = SlugHelper.GenerateSlug("why-i-keep-going-back-to-nvim")
                 },
                     new Post
                     {
-                        Title = "Second Post",
-                        Content = "This is the second post",
+                        Title = "My Personal 80/20 Linux Commands List",
+                        Content = "These are the most useful commands and flags",
                         AuthoredDate = DateTime.Now,
                         Author = defaultUser,
                         AuthorId = defaultUser.Id,
-                        Slug = SlugHelper.GenerateSlug("Second Post")
+                        Slug = SlugHelper.GenerateSlug("my-personal-80-20-linux-commands")
                      }
                 };
 

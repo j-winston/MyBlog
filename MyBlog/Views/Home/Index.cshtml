@@ -12,7 +12,7 @@
 
 	@foreach(var post in Model)
 	{
-		<a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Slug</a>
+		<a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a>
 		<p>@post.AuthoredDate</p>
 		<p>@post.Content</p>
 	}
