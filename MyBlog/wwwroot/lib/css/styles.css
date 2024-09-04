@@ -1,0 +1,129 @@
+/* CSS Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+img,
+video {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+input,
+button,
+textarea,
+select {
+  font-family: inherit;
+  font-size: inherit;
+  background-color: transparant;
+  border: none;
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+
+th,
+td {
+  padding: 0;
+  text-align: left;
+}
+
+body {
+  padding: 10px;
+  background-color: lightcyan;
+}
+
+.grid-container {
+  display: grid;
+  height: 100vh;
+  grid-template-areas:
+    "navbar navbar"
+    "main sidebar"
+    "footer footer";
+  grid-gap: 10px;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 6fr 1fr;
+
+}
+
+.grid-navbar {
+  grid-area: navbar;
+  background-color: #f8f9fa;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.grid-main {
+  grid-area: main;
+  border: 1px solid black;
+  background-color: lightblue;
+}
+
+.grid-sidebar {
+  grid-area: sidebar;
+  border: 1px solid black;
+  background-color: lightgrey;
+}
+
+.grid-footer {
+  grid-area: footer;
+  border: 1px solid black;
+  background-color: darkgrey;
+}
+
+/* Navbar styling */
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+
+}
+
+.logo {
+  font-size: 1.2rem;
+}
+
+.logo-text {
+  font-size: .9rem;
+}

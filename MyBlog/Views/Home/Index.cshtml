@@ -1,6 +1,6 @@
 @model IEnumerable<MyBlog.Models.Post>
 @{
-	Layout = null; 
+	Layout = "_Layout";
 }
 
 <!DOCTYPE html>
@@ -12,8 +12,7 @@
 
 	@foreach(var post in Model)
 	{
-			<a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Slug</a>
-
+		<a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Slug</a>
 		<p>@post.AuthoredDate</p>
 		<p>@post.Content</p>
 	}
