@@ -1,5 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using MyBlog.Utilities;
+
 
 
 namespace MyBlog.Models
@@ -47,7 +49,8 @@ namespace MyBlog.Models
                     Content = "This is a the content of the second post.",
                     AuthoredDate = DateTime.Now,
                     Author = defaultUser,
-                    AuthorId = defaultUser.Id
+                    AuthorId = defaultUser.Id,
+                    Slug = SlugHelper.GenerateSlug("First Post")
                 },
                     new Post
                     {
@@ -55,7 +58,8 @@ namespace MyBlog.Models
                         Content = "This is the second post",
                         AuthoredDate = DateTime.Now,
                         Author = defaultUser,
-                        AuthorId = defaultUser.Id
+                        AuthorId = defaultUser.Id,
+                        Slug = SlugHelper.GenerateSlug("Second Post")
                      }
                 };
 

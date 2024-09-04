@@ -50,6 +50,13 @@ using (var scope = app.Services.CreateScope())
 app.UseStaticFiles();
 app.UseSession();
 
+app.MapControllerRoute(
+        name: "blogPost",
+        pattern: "{slug}",
+        defaults: new { controller = "Home", action = "Details" }
+        );
+
+
 app.MapDefaultControllerRoute();
 
 app.UseAuthentication();

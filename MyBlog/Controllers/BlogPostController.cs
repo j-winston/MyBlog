@@ -4,6 +4,7 @@ using MyBlog.Models;
 using MyBlog.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using MyBlog.Utilities;
 
 
 namespace MyBlog.Controllers
@@ -33,22 +34,28 @@ namespace MyBlog.Controllers
         [Authorize]
         public async Task<IActionResult> CreatePost(CreatePostModel model)
         {
+
             var loggedInUser = await _authService.GetLoggedInUser();
 
-            var post = new Post()
+            if (model != null)
             {
-                Title = model.Title,
-                Content = model.Content,
-                AuthorId = loggedInUser.Id,
-                AuthoredDate = DateTime.Today
+                var post = new Post()
+                {
+                    Title = model.Title,
+                    Content = model.Content,
+                    AuthorId = loggedInUser?.Id,
+                    AuthoredDate = DateTime.Today,
+                    Slug = SlugHelper.GenerateSlug(model.Title),
 
-            };
+                };
 
-            _context.Posts.Add(post);
+                _context.Posts.Add(post);
 
-            _context.SaveChanges();
+                _context.SaveChanges();
+                return RedirectToAction("AdminPanel", "Account");
+            }
 
-            return RedirectToAction("AdminPanel", "Account");
+            return View();
 
 
         }

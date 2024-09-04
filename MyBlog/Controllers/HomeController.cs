@@ -25,6 +25,23 @@ namespace MyBlog.Controllers
 
         }
 
+        public IActionResult Details(string slug)
+        {
+
+            var post = _context.Posts?.Where(p => p.Slug == slug).FirstOrDefault();
+
+            if (post != null)
+            {
+                return View(post);
+            }
+
+            return RedirectToAction("Index", "Home");
+
+
+        }
+
+
+
 
     }
 
