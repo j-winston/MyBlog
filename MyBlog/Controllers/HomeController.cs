@@ -7,7 +7,6 @@ namespace MyBlog.Controllers
     public class HomeController : Controller
     {
 
-        private Post? _myPost;
         private ApplicationDbContext _context;
 
         public HomeController(ApplicationDbContext context)
@@ -16,12 +15,17 @@ namespace MyBlog.Controllers
 
         }
 
-
         // Define actions
-        public ViewResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            // get posts 
+            var posts = await _context.Posts.OrderBy(p => p.AuthoredDate).ToListAsync();
+
+            return View(posts);
+
         }
+
+
     }
 
 

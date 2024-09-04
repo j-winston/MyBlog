@@ -1,3 +1,4 @@
+@model IEnumerable<MyBlog.Models.Post>
 @{
 	Layout = null; 
 }
@@ -7,7 +8,16 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>My Personal Blog </title>
+	<title>James Winston - Software Developer in Morrisville, North Carolina</title>
+
+	@foreach(var post in Model)
+	{
+		<h2>@post.Title</h2>
+		<p>@post.AuthoredDate</p>
+		<p>@post.Content</p>
+	}
+
+
 
 </head>
 <body>
