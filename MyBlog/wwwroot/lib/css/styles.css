@@ -70,7 +70,11 @@ html,
 body {
   overflow: hidden;
   height: 100%;
-  margin: 0;
+
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
 
 /* Grid layout */
@@ -88,11 +92,21 @@ body {
   grid-template-columns: 2fr 1fr;
   grid-template-rows: 1fr 6fr 1fr;
 
-  padding-left: 4%;
-  padding-right: 4%;
-  padding-top: 3%;
-  padding-bottom: 4%;
 
+
+}
+
+.grid-container-details {
+  display: grid;
+  height: 100%;
+
+  grid-template-areas:
+    "navbar"
+    "main"
+    "footer";
+  grid-gap: 10px;
+
+  grid-template-rows: 1fr 6fr 1fr;
 
 }
 
@@ -227,14 +241,14 @@ body {
 .post-detail-container {
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 100%;
   gap: 10px;
 
 
 }
 
 .post-image {
-  width: 85%;
+  width: 100%;
 
 }
 
@@ -252,16 +266,10 @@ body {
 
 .post-detail-author {
   display: flex;
-  gap: 3px;
+  gap: 4px;
+  align-items: center;
 
 }
-
-.post-detail-thumbnail {
-  width: 50px;
-  height: 50px;
-  border-radius: 40px;
-}
-
 
 .post-detail-title {
   font-size: 1.9rem;
@@ -295,4 +303,10 @@ body {
   border-radius: 5px;
   border: 1px solid #ddd;
 
+}
+
+.post-detail-thumbnail {
+  width: 50px;
+  height: 50px;
+  border-radius: 40px;
 }
