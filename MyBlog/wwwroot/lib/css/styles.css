@@ -67,6 +67,8 @@ body {
   background-color: lightcyan;
 }
 
+/* Grid layout */
+
 .grid-container {
   display: grid;
   height: 100vh;
@@ -99,6 +101,16 @@ body {
   background-color: lightgrey;
 }
 
+.grid-sidebar-about {
+  display: grid;
+  grid-template-areas:
+    "headshot"
+    "bio"
+    "social-links";
+  grid-template-rows: 1fr 1fr 1fr;
+  border: 1px solid black;
+}
+
 .grid-footer {
   grid-area: footer;
   border: 1px solid black;
@@ -110,18 +122,22 @@ body {
 .navbar-container {
   display: flex;
   justify-content: space-between;
+
+}
+
+.navbar-link {
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 .logo-container {
   display: flex;
   flex-direction: column;
   align-items: start;
-
-
 }
 
 .logo {
-  font-size: 1.2rem;
+  font-size: 1.4em;
 }
 
 .logo-text {
@@ -129,10 +145,13 @@ body {
 }
 
 
+/* Main content box */
+
 .content-container {
   display: flex;
   align-items: start;
   flex-direction: column;
+
 }
 
 .content-container-detail-view {
@@ -145,5 +164,73 @@ body {
   justify-content: center;
   align-items: center;
   margin-top: 40px;
+
+}
+
+/* Post styling */
+
+.post-container-main {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  border: 1px solid black;
+
+}
+
+.post-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+
+}
+
+
+.post-title {
+  font-size: 1.8rem;
+
+}
+
+.post-title a:hover {
+  text-decoration: underline;
+}
+
+
+.post-content {
+  font-size: 1.1rem;
+}
+
+
+.post-date {
+  font-size: .9rem;
+}
+
+/* Sidebar styling */
+
+.grid-sidebar-headshot {
+  grid-area: "headshot";
+}
+
+.grid-sidebar-bio {
+  grid-area: "bio";
+}
+
+.grid-sidebar-social {
+  grid-area: "social-links";
+  display: flex;
+  flex-direction: column;
+
+}
+
+
+/*Image styling */
+
+.thumbnail-headshot {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 5px;
+  border: 1px solid #ddd;
 
 }

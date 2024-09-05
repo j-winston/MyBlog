@@ -9,13 +9,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>James Winston - Software Developer in Morrisville, North Carolina</title>
+	<link rel="stylesheet" href="/lib/css/styles.css">
+	
+	<div class="post-container-main">
 
-	@foreach(var post in Model)
-	{
-		<a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a>
-		<p>@post.AuthoredDate</p>
-		<p>@post.Content</p>
-	}
+		@foreach(var post in Model)
+		{
+			<div class="post-container">
+			
+				<p class="post-title"><a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a></p>
+				<p class="post-date">@post.AuthoredDate</p>
+				<p class="post-content">@post.Content</p>
+			</div>
+		}
+	</div>
 
 
 
