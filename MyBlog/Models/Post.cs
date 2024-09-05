@@ -16,7 +16,7 @@ namespace MyBlog.Models
         [ForeignKey("AuthorId")]
         public IdentityUser? Author { get; set; }
 
-        public DateTime? AuthoredDate { get; set; }
+        public DateTime AuthoredDate { get; set; }
 
     }
 }

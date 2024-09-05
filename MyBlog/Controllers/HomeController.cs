@@ -21,6 +21,7 @@ namespace MyBlog.Controllers
             // get posts 
             var posts = await _context.Posts.OrderBy(p => p.AuthoredDate).ToListAsync();
 
+
             return View(posts);
 
         }
@@ -32,8 +33,11 @@ namespace MyBlog.Controllers
 
             if (post != null)
             {
+
                 return View(post);
+
             }
+
 
             return RedirectToAction("Index", "Home");
 

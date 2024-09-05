@@ -13,6 +13,8 @@ body {
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  color: #333333;
 }
 
 ul,
@@ -62,9 +64,6 @@ td {
   text-align: left;
 }
 
-body {
-  background-color: lightcyan;
-}
 
 html,
 body {
@@ -89,8 +88,8 @@ body {
     "footer footer";
 
   grid-gap: 10px;
-  grid-template-columns: 2fr 1fr;
-  grid-template-rows: 1fr 6fr 1fr;
+  grid-template-columns: 3fr 1fr;
+  grid-template-rows: 1fr 7fr 1fr;
 
 
 
@@ -114,14 +113,10 @@ body {
 
 .grid-navbar {
   grid-area: navbar;
-  background-color: #f8f9fa;
-  border: 1px solid black;
 }
 
 .grid-main {
   grid-area: main;
-  border: 1px solid black;
-  background-color: lightblue;
 }
 
 .grid-main-detail {
@@ -130,8 +125,6 @@ body {
 
 .grid-sidebar {
   grid-area: sidebar;
-  border: 1px solid black;
-  background-color: lightgrey;
 
 }
 
@@ -142,13 +135,13 @@ body {
     "bio"
     "social-links";
   grid-template-rows: 1fr 1fr 1fr;
-  border: 1px solid black;
+
+  gap: 10%;
 }
+
 
 .grid-footer {
   grid-area: footer;
-  border: 1px solid black;
-  background-color: darkgrey;
 }
 
 /* Navbar styling */
@@ -156,6 +149,7 @@ body {
 .navbar-container {
   display: flex;
   justify-content: space-between;
+
 
 }
 
@@ -176,6 +170,7 @@ body {
 
 .logo-text {
   font-size: .9rem;
+  color: #4a4a4a;
 }
 
 
@@ -205,15 +200,14 @@ body {
   flex-direction: column;
   gap: 30px;
 
-  border: 1px solid black;
 
 }
 
 .blog-post {
   display: flex;
-  flex-direction: column;
   gap: 10px;
-  border: 1px solid black;
+
+  margin-bottom: 5%;
 
 }
 
@@ -235,6 +229,15 @@ body {
 
 .post-date {
   font-size: .9rem;
+  color: #555555;
+
+}
+
+.post-wrapper {
+  width: 70%;
+  margin-left: 5%;
+
+
 }
 
 /* Post details styling */
@@ -256,8 +259,6 @@ body {
   border-radius: 5px;
 
   object-fit: cover;
-
-
 
 
 }
@@ -286,6 +287,11 @@ body {
   grid-area: "bio";
 }
 
+.bio-header {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
 .grid-sidebar-social {
   grid-area: "social-links";
   display: flex;
@@ -300,8 +306,13 @@ body {
   width: 120px;
   height: 120px;
   object-fit: cover;
-  border-radius: 5px;
-  border: 1px solid #ddd;
+  border-radius: 10px;
+
+}
+
+.post-thumbnail {
+  width: 100px;
+  border-radius: 40px;
 
 }
 
@@ -309,4 +320,10 @@ body {
   width: 50px;
   height: 50px;
   border-radius: 40px;
+}
+
+
+.comment {
+  font-family: 'Courier New', Courier, monospace;
+  color: gray;
 }
