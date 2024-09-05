@@ -11,9 +11,26 @@ Layout = "_DetailsLayout";
 	<title>@Model.Title</title>
 </head>
 <body>
+		<div class="post-detail-container">
+			<div class="post-image">
+				<img src="/images/orin-post.jpg" alt="">
+			</div>
+			<div class="post-detail-title">
+				<p>@Model.Title</p>
+			</div>
 
-	<p>@Model.Title</p>
-	<p>@Model.Content</p>
+			<div class="post-detail-author">
+				<img class="post-detail-thumbnail" src="/images/orin-headshot.jpg" alt="">
+				<p>by James Winston</p>   
+				<p>@Model.AuthoredDate</p>   
+			</div>
+			<div class="post-detail-content">
+				<p>@Model.Content</p>
+			</div>
+		</div>
+		
+	
+
 		
 	
 </body>
