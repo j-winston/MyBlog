@@ -34,7 +34,6 @@ namespace MyBlog.Controllers
         [Authorize]
         public async Task<IActionResult> CreatePost(CreatePostModel model)
         {
-
             var loggedInUser = await _authService.GetLoggedInUser();
 
             if (model != null)
@@ -47,11 +46,21 @@ namespace MyBlog.Controllers
                     AuthoredDate = DateTime.Today,
                     Slug = SlugHelper.GenerateSlug(model.Title),
 
+                    CoverImagePath = model.CoverImage.FileName,
+                    CoverImage = model.CoverImage
+
                 };
 
-                _context.Posts.Add(post);
+
+                if (post.CoverImage != null)
+                {
+                    await UploadFile(post.CoverImage);
+                }
+
+                _context.Posts?.Add(post);
 
                 _context.SaveChanges();
+
                 return RedirectToAction("AdminPanel", "Account");
             }
 
@@ -71,11 +80,10 @@ namespace MyBlog.Controllers
                 if (post != null)
                 {
 
-
                     _context.Posts.Remove(post);
                     _context.SaveChanges();
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("AdminPanel", "Account");
                 }
             }
 
@@ -128,6 +136,34 @@ namespace MyBlog.Controllers
         }
 
 
+        [Authorize]
+        [HttpPost]
+        public async Task<ActionResult> UploadFile(IFormFile fileUpload)
+        {
+            if (fileUpload != null && fileUpload.Length > 0)
+            {
+                if (fileUpload.ContentType == "image/jpeg" || fileUpload.ContentType == "image/jpg")
+                {
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileUpload.FileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await fileUpload.CopyToAsync(stream);
+                    }
+
+                    ViewBag.Message = "File upload successful";
+                    return View();
+                }
+
+                ViewBag.Message = "Please upload a valid jpeg";
+
+                return View();
+            }
+
+            ViewBag.Message = "No file selected";
+            return View();
+
+        }
 
     }
 

@@ -18,5 +18,10 @@ namespace MyBlog.Models
 
         public DateTime AuthoredDate { get; set; }
 
+        [NotMapped]
+        public IFormFile? CoverImage { get; set; }
+
+        public string? CoverImagePath { get; set; }
+
     }
 }
