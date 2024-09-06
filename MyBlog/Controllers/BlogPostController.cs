@@ -26,7 +26,7 @@ namespace MyBlog.Controllers
         [Authorize]
         public IActionResult CreatePost()
         {
-            return View();
+            return View(new CreatePostModel());
 
         }
 
