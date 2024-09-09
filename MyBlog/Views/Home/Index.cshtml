@@ -24,7 +24,7 @@
 				<div class="post-wrapper">
 					<p class="post-title"><a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a></p>
 					<p class="post-date"> @post.AuthoredDate.ToString("MMM dd"),@post.AuthoredDate.ToString(" yyyy") </p>
-					<p class="post-content">@post.Content</p>
+						<pre class="post-content">@post.Content</pre>
 				</div>
 			</div>
 		}

@@ -67,7 +67,6 @@ td {
 
 html,
 body {
-  overflow: hidden;
   height: 100%;
 
   padding-left: 4%;
@@ -247,6 +246,8 @@ body {
   gap: 10px;
 
 
+
+
 }
 
 .post-image {
@@ -325,4 +326,10 @@ body {
 .comment {
   font-family: 'Courier New', Courier, monospace;
   color: gray;
+}
+
+/* Preserve whitespace */
+
+.whitespace-pre {
+  white-space: pre-wrap;
 }
