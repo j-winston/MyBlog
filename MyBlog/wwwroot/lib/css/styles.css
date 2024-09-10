@@ -6,15 +6,29 @@
   box-sizing: border-box;
 }
 
+h1,
+h2,
+h3 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
 
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.1rem;
   line-height: 1.5;
-  font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  color: #333333;
+  color: #444444;
+}
+
+
+
+pre {
+  font-family: sans-serif;
+  line-height: 0;
 }
 
 ul,
@@ -133,9 +147,9 @@ body {
     "headshot"
     "bio"
     "social-links";
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 2fr 1fr;
 
-  gap: 10%;
+  gap: 5%;
 }
 
 
@@ -153,7 +167,7 @@ body {
 }
 
 .navbar-link {
-  font-size: 1.2rem;
+  font-size: 1rem;
   font-weight: bold;
 }
 
@@ -189,6 +203,8 @@ body {
   flex-direction: column;
   align-items: center;
 
+  font-size: .9rem;
+  color: #444444;
 }
 
 /* Post styling main page */
@@ -198,7 +214,6 @@ body {
   flex-direction: column;
   gap: 30px;
 
-
 }
 
 .blog-post {
@@ -206,37 +221,49 @@ body {
   gap: 10px;
 
   margin-bottom: 5%;
-
 }
 
-
-.post-title {
-  font-size: 1.8rem;
-
-}
 
 .post-title a:hover {
   text-decoration: underline;
 }
 
+.read-more-link a:hover {
+  text-decoration: underline;
 
-.post-content {
-  font-size: 1.1rem;
+}
+
+
+pre.post-content {
+  line-height: .9rem;
 }
 
 
 .post-date {
   font-size: .9rem;
-  color: #555555;
+  color: #6c757d;
 
 }
+
+.read-more-link {
+  margin-top: 5%;
+}
+
+a.read-more-link:hover {
+  text-decoration: underline;
+
+}
+
 
 .post-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+
   width: 70%;
   margin-left: 5%;
-
-
 }
+
 
 /* Post details styling */
 .post-detail-container {
@@ -244,9 +271,6 @@ body {
   flex-direction: column;
   width: 100%;
   gap: 10px;
-
-
-
 
 }
 
@@ -271,11 +295,6 @@ body {
   align-items: center;
 
 }
-
-.post-detail-title {
-  font-size: 1.9rem;
-}
-
 
 /* Sidebar styling */
 

@@ -22,9 +22,12 @@
 				</div>
 			
 				<div class="post-wrapper">
-					<p class="post-title"><a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a></p>
+					<h1 class="post-title"><a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a></h1>
+
 					<p class="post-date"> @post.AuthoredDate.ToString("MMM dd"),@post.AuthoredDate.ToString(" yyyy") </p>
-						<pre class="post-content">@post.Content</pre>
+
+					<pre class="post-content">@post.Content</pre>
+
 				</div>
 			</div>
 		}
