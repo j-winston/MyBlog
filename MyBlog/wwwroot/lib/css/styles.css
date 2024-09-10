@@ -152,6 +152,7 @@ body {
 }
 
 
+
 .grid-footer {
   grid-area: footer;
 }
@@ -248,7 +249,7 @@ body {
 
 
 pre.post-content {
-  line-height: .9rem;
+  line-height: .8rem;
 }
 
 
@@ -340,6 +341,31 @@ a.read-more-link:hover {
   display: flex;
   flex-direction: column;
 
+}
+
+
+.social-link-container {
+  display: flex;
+  gap: 5px;
+
+  margin: 5px 0px;
+}
+
+.social-link {
+  font-size: 1rem;
+}
+
+.linkedin-icon {
+  color: #0d66c2;
+  align-self: center;
+}
+
+.github-icon {
+  align-self: center;
+}
+
+a.social-link:hover {
+  text-decoration: underline;
 }
 
 
