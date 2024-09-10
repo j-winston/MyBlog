@@ -142,7 +142,7 @@ namespace MyBlog.Controllers
         {
             if (fileUpload != null && fileUpload.Length > 0)
             {
-                if (fileUpload.ContentType == "image/jpeg" || fileUpload.ContentType == "image/jpg")
+                if (fileUpload.ContentType == "image/jpeg" || fileUpload.ContentType == "image/jpg" || fileUpload.ContentType == "image/png")
                 {
                     var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images", fileUpload.FileName);
 

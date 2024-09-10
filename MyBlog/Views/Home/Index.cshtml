@@ -17,14 +17,14 @@
 		{
 			<div class="blog-post">
 
-				<div class="blog-post-thumbnail">
-					<img class="post-thumbnail" src="/images/neo-vim-logo.png" alt="">
+				<div class="blog-post-thumbnail-square">
+					<img class="post-thumbnail" src="images/@post.CoverImagePath" alt="">
 				</div>
 			
 				<div class="post-wrapper">
 					<h1 class="post-title"><a href="@Url.Action("Details", "Home", new{slug=post.Slug})">@post.Title</a></h1>
 
-					<p class="post-date"> @post.AuthoredDate.ToString("MMM dd"),@post.AuthoredDate.ToString(" yyyy") </p>
+					<p class="post-date">@post.AuthoredDate.ToString("MMM dd"),@post.AuthoredDate.ToString(" yyyy") </p>
 
 					<pre class="post-content">@post.Content</pre>
 
