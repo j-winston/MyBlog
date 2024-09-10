@@ -10,7 +10,6 @@ h1,
 h2,
 h3 {
   font-family: 'Montserrat', sans-serif;
-  font-weight: 600;
 }
 
 
@@ -27,7 +26,7 @@ body {
 
 
 pre {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 0;
 }
 
@@ -118,7 +117,7 @@ body {
     "footer";
   grid-gap: 10px;
 
-  grid-template-rows: 1fr 6fr 1fr;
+  grid-template-rows: 1fr 7fr 1fr;
 
 }
 
@@ -138,7 +137,6 @@ body {
 
 .grid-sidebar {
   grid-area: sidebar;
-
 }
 
 .grid-sidebar-about {
@@ -183,7 +181,7 @@ body {
 
 .logo-text {
   font-size: .9rem;
-  color: #4a4a4a;
+  color: rgb(55, 80, 93);
 }
 
 
@@ -274,8 +272,16 @@ a.read-more-link:hover {
 
 }
 
+
+.post-detail-content {
+  margin-top: 5%;
+}
+
+
+
 .post-image {
-  width: 100%;
+  max-width: 50%;
+  height: auto;
 
 }
 
@@ -290,6 +296,8 @@ a.read-more-link:hover {
 /*Author section styling */
 
 .post-detail-author {
+  color: #37505d;
+  font-size: .9rem;
   display: flex;
   gap: 4px;
   align-items: center;
