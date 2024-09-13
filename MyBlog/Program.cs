@@ -66,5 +66,11 @@ app.UseAuthorization();
 app.MapRazorPages();
 //app.MapFallbackToPage("/admin/{*catchall}", "/Admin/Index");
 
+app.UseRequestLocalization(opts =>
+{
+    opts.AddSupportedCultures("en-US")
+    .AddSupportedUICultures("eb-US")
+    .SetDefaultCulture("en-US");
+});
 app.Run();
 
