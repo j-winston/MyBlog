@@ -1,4 +1,3 @@
-version: "3"
 services:
   myblog:
     build: .
@@ -8,9 +7,11 @@ services:
       - ASPNETCORE_ENVIRONMENT=Production
     depends_on:
       - sqlserver
+    volumes:
+      - ./wwwroot/images:/app/wwwroot/images
 
   sqlserver:
     image: "mcr.microsoft.com/mssql/server"
     environment:
-      SA_PASSWORD: "**REMOVED**"
+      MSSQL_SA_PASSWORD: "**REMOVED**"
       ACCEPT_EULA: "Y"

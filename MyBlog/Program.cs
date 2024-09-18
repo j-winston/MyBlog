@@ -16,8 +16,18 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 builder.Services.AddDbContext<IdentityContext>(
         options =>
         {
-            options.UseSqlServer(builder.Configuration.GetConnectionString("IdentityConnection"));
+            options.UseSqlServer(
+                builder.Configuration.GetConnectionString("IdentityConnection"),
+                    sqlOptions =>
+                    {
+                        sqlOptions.EnableRetryOnFailure(
+                            maxRetryCount: 5,
+                            maxRetryDelay: TimeSpan.FromSeconds(10),
+                            errorNumbersToAdd: null);
+                    });
+
         });
+
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<IdentityContext>();
 
@@ -43,6 +53,12 @@ var app = builder.Build();
 
 using (var scope = app.Services.CreateScope())
 {
+    var dbcontext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    dbcontext.Database.EnsureCreated();
+
+    var identityContext = scope.ServiceProvider.GetRequiredService<IdentityContext>();
+    identityContext.Database.EnsureCreated();
+
     var services = scope.ServiceProvider;
     await SeedData.Initialize(services);
 }
