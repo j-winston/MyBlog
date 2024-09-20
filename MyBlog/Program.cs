@@ -17,7 +17,7 @@ builder.Services.AddDbContext<IdentityContext>(
         options =>
         {
             options.UseSqlServer(
-                builder.Configuration.GetConnectionString("IdentityConnection"),
+                builder.Configuration.GetConnectionString("DefaultConnection"),
                     sqlOptions =>
                     {
                         sqlOptions.EnableRetryOnFailure(
