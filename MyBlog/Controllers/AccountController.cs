@@ -66,8 +66,6 @@ namespace MyBlog.Controllers
 
             return View();
 
-
-
         }
 
         [Authorize]
