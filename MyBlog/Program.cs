@@ -62,7 +62,7 @@ using (var scope = app.Services.CreateScope())
     identityContext.Database.EnsureCreated();
 
     var services = scope.ServiceProvider;
-    //await SeedData.Initialize(services);
+    await SeedData.Initialize(services);
 }
 
 app.UseStaticFiles();

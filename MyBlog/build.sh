@@ -11,9 +11,6 @@ dotnet publish --configuration Release
 echo "Running tests..."
 dotnet test --configuration Release 
 
-# Publish
-echo "Build process complete."
-
 # Pull down any docker images
 docker-compose down  
 echo "Pulling down any images..."
@@ -32,11 +29,11 @@ docker-compose build
 
 # Tag images 
 echo "Tagging docker images..."
-docker build tag myblog-myblog jameswinston/myblog:v6
+docker tag myblog-myblog jameswinston/myblog:v7
 echo "Images tagged."
 
 # Push images to docker hub
 echo "Pushing images to docker hub..."
-docker push jameswinston/myblog:v6
+docker push jameswinston/myblog:v7
 echo "Images pushed"
 
