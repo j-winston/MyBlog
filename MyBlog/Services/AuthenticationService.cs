@@ -19,6 +19,7 @@ namespace MyBlog.Services
             _userManager = userManager;
             _signInManager = signInManager;
             _httpContextAccessor = httpContextAccessor;
+
         }
 
         public async Task<IdentityResult> RegisterUserAsync(LoginViewModel model)
@@ -65,7 +66,36 @@ namespace MyBlog.Services
 
             return await _userManager.GetUserAsync(user);
         }
+
+        public async Task<IdentityResult> ChangePassword(PasswordChangeModel model)
+        {
+
+            // bail if context or user is null 
+            var userContext = _httpContextAccessor.HttpContext?.User;
+            if (userContext?.Identity?.IsAuthenticated != true)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "User not authorized." });
+            }
+
+            // if not, get the logged in user
+            var loggedInUser = await _userManager.GetUserAsync(userContext);
+            if (loggedInUser == null)
+            {
+                return IdentityResult.Failed(new IdentityError { Description = "No logged-in user found." });
+            }
+
+            var result = await _userManager.ChangePasswordAsync(loggedInUser, model.OldPassword, model.NewPassword);
+            if (result.Succeeded)
+            {
+                return IdentityResult.Success;
+
+            }
+
+
+            return result;
+
+        }
     }
 
-
 }
+

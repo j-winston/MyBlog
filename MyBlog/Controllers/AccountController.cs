@@ -99,6 +99,38 @@ namespace MyBlog.Controllers
         }
 
         [Authorize]
+        [HttpGet]
+        public IActionResult ChangePassword()
+        {
+            return View(new PasswordChangeModel());
+        }
+
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ChangePassword(PasswordChangeModel model)
+        {
+            var user = await _authService.GetLoggedInUser();
+
+            if (user == null)
+            {
+                return View();
+            }
+
+            IdentityResult result = await _authService.ChangePassword(model);
+
+            if (result.Succeeded)
+            {
+                return Redirect("AdminPanel");
+            }
+
+            else
+                return Redirect("ChangePassword");
+
+
+        }
+
+        [Authorize]
         public async Task<IActionResult> Logout()
         {
             await _authService.LogoutUserAsync();
