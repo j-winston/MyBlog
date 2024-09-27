@@ -212,6 +212,7 @@ body {
 .post-container-main {
   display: flex;
   flex-direction: column;
+  max-width: 40%;
   gap: 30px;
 
 }
