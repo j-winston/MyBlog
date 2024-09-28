@@ -29,11 +29,11 @@ docker-compose build
 
 # Tag images 
 echo "Tagging docker images..."
-docker tag myblog-myblog jameswinston/myblog:v8
+docker tag myblog-myblog jameswinston/myblog:v10
 echo "Images tagged."
 
 # Push images to docker hub
 echo "Pushing images to docker hub..."
-docker push jameswinston/myblog:v8
+docker push jameswinston/myblog:v10
 echo "Images pushed"
 
