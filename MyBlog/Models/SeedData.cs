@@ -39,14 +39,44 @@ namespace MyBlog.Models
                 }
             }
 
-            await context.SaveChangesAsync();
 
+            if (defaultUser != null && !context.Posts.Any())
+            {
+                var posts = new List<Post>
+                {
+
+                new Post
+
+                {
+                    Title = "Why I Keep Going Back to Neovim",
+                    Content = "Neovim is strangely carthartic to me",
+                    AuthoredDate = DateTime.Now.Date,
+                    Author = defaultUser,
+                    AuthorId = defaultUser.Id,
+                    Slug = SlugHelper.GenerateSlug("why-i-keep-going-back-to-nvim")
+                },
+                    new Post
+                    {
+                        Title = "My Personal 80/20 Linux Commands List",
+                        Content = "These are the most useful commands and flags",
+
+                        AuthoredDate = DateTime.Now.Date,
+                        Author = defaultUser,
+                        AuthorId = defaultUser.Id,
+                        Slug = SlugHelper.GenerateSlug("my-personal-80-20-linux-commands")
+                     }
+                };
+
+
+                context.Posts.AddRange(posts);
+                await context.SaveChangesAsync();
+
+            }
         }
+
     }
 
 }
-
-
 
 
 

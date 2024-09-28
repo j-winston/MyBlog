@@ -8,7 +8,7 @@ using MyBlog.Models;
 
 #nullable disable
 
-namespace MyBlog.Migrations.ApplicationDb
+namespace MyBlog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     partial class ApplicationDbContextModelSnapshot : ModelSnapshot

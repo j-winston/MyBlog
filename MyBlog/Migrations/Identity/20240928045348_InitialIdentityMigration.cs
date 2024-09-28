@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace MyBlog.Migrations.ApplicationDb
+namespace MyBlog.Migrations.Identity
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class InitialIdentityMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

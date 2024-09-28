@@ -5,7 +5,7 @@
 namespace MyBlog.Migrations
 {
     /// <inheritdoc />
-    public partial class RemoveSeedData : Migration
+    public partial class InitialApplicationMigration : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

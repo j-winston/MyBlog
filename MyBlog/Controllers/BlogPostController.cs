@@ -64,7 +64,8 @@ namespace MyBlog.Controllers
                 return RedirectToAction("AdminPanel", "Account");
             }
 
-            return View();
+
+            return RedirectToAction("AdminPanel", "Account");
 
 
         }

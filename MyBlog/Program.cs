@@ -33,7 +33,6 @@ builder.Services.AddDbContext<IdentityContext>(
 builder.Services.AddIdentity<IdentityUser, IdentityRole>()
 .AddEntityFrameworkStores<IdentityContext>();
 
-
 builder.Services.AddRazorPages();
 
 builder.Services.AddSession();

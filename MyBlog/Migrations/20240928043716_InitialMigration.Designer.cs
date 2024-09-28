@@ -9,11 +9,11 @@ using MyBlog.Models;
 
 #nullable disable
 
-namespace MyBlog.Migrations.ApplicationDb
+namespace MyBlog.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240902212030_Initial")]
-    partial class Initial
+    [Migration("20240928043716_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -88,10 +88,16 @@ namespace MyBlog.Migrations.ApplicationDb
                     b.Property<string>("AuthorId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<DateTime?>("AuthoredDate")
+                    b.Property<DateTime>("AuthoredDate")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Content")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverImagePath")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Slug")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Title")

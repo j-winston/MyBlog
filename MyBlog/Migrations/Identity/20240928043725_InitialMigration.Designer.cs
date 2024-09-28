@@ -9,11 +9,11 @@ using MyBlog.Models;
 
 #nullable disable
 
-namespace MyBlog.Migrations
+namespace MyBlog.Migrations.Identity
 {
     [DbContext(typeof(IdentityContext))]
-    [Migration("20240920202715_MigrateAzure")]
-    partial class MigrateAzure
+    [Migration("20240928043725_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
