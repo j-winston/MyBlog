@@ -254,6 +254,16 @@ pre.post-content {
 }
 
 
+.post-preview {
+  display: -webkit-box;
+  -webkit-line-clamp: 5;
+  line-clamp: 5;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
 .post-date {
   font-size: .9rem;
   color: #6c757d;
@@ -400,5 +410,6 @@ a.social-link:hover {
   color: gray;
 }
 
+
+
 /* Update Styling */
-.update-content {}

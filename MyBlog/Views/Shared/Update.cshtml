@@ -11,18 +11,16 @@
 	<title>Edit: @Model.Title</title>
 </head>
 <body>
-		<form asp-action="Update" method="post">
-		<div>
-			<label asp-for="Title">Title: </label>
-			<input asp-for="Title">
-		</div>
 
-		<div>
-			<label asp-for="Content">Content: </label>
-		<textarea class="update-content" rows="5" asp-for="Content"></textarea>
-		</div>
-			<button type="submit">Submit</button>
+		<div class="update-form">
 
-		</form>
+				<input asp-for="Title">
+			<form asp-action="Update" method="post">
+			<div class="form-group">
+				<textarea rows="40" cols="70" asp-for="Content"></textarea>
+			</div>
+				<button type="submit">Submit</button>
+			</form>
+</div>
 </body>
 </html>
