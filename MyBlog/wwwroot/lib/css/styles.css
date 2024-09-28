@@ -194,6 +194,7 @@ body {
   align-items: start;
   flex-direction: column;
 
+
 }
 
 
@@ -212,7 +213,6 @@ body {
 .post-container-main {
   display: flex;
   flex-direction: column;
-  max-width: 40%;
   gap: 30px;
 
 }
@@ -275,30 +275,33 @@ a.read-more-link:hover {
   flex-direction: column;
   gap: 9px;
 
-  width: 70%;
+  width: 60%;
   margin-left: 5%;
 }
 
 
 /* Post details styling */
-.post-detail-container {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  gap: 10px;
 
+.post-content {
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
 }
+
 
 
 .post-detail-content {
   margin-top: 5%;
-  line-height: 2rem;
+  line-height: 1.5;
+}
+
+.post-detail-container {
+  max-width: 55%;
 }
 
 
 
 .post-image {
-  max-width: 50%;
+  max-width: 100%;
   height: auto;
 
 }
@@ -396,3 +399,6 @@ a.social-link:hover {
   font-family: 'Courier New', Courier, monospace;
   color: gray;
 }
+
+/* Update Styling */
+.update-content {}
