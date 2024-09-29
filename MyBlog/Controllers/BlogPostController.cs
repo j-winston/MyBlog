@@ -127,7 +127,7 @@ namespace MyBlog.Controllers
 
                     // save changes to db 
                     _context.SaveChanges();
-
+                    Console.WriteLine($"Updated Title: {postDb.Title}");
                     return RedirectToAction("AdminPanel", "Account");
                 }
             }
