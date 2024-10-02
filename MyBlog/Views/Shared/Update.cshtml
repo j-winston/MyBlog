@@ -17,6 +17,7 @@
 			<form asp-action="Update" method="post">
 			<div class="form-group">
 				<input asp-for="Title" type="text" value="@Model.Title">
+				<input type="file" id="CoverImage" name="CoverImage" accept=".jpeg,.jpg,.png" class="form-control w-70" type="file" asp-for="CoverImagePath"/>
 				<textarea rows="40" cols="70" asp-for="Content"></textarea>
 			</div>
 				<button type="submit">Submit</button>

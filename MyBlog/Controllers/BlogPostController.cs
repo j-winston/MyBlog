@@ -36,7 +36,7 @@ namespace MyBlog.Controllers
         {
             var loggedInUser = await _authService.GetLoggedInUser();
 
-            if (model != null)
+            if (model != null && ModelState.IsValid)
             {
                 var post = new Post()
                 {
@@ -50,12 +50,7 @@ namespace MyBlog.Controllers
                     CoverImage = model.CoverImage
 
                 };
-
-
-                if (post.CoverImage != null)
-                {
-                    await UploadFile(post.CoverImage);
-                }
+                await UploadFile(post.CoverImage);
 
                 _context.Posts?.Add(post);
 
@@ -65,7 +60,7 @@ namespace MyBlog.Controllers
             }
 
 
-            return RedirectToAction("AdminPanel", "Account");
+            return View(model);
 
 
         }
@@ -124,6 +119,9 @@ namespace MyBlog.Controllers
                     // update content and title 
                     postDb.Content = post.Content;
                     postDb.Title = post.Title;
+
+                    CoverImagePath = post.CoverImage.FileName;
+                    CoverImage = post.CoverImage;
 
                     // save changes to db 
                     _context.SaveChanges();
