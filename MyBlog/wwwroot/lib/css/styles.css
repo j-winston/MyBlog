@@ -239,6 +239,7 @@ body {
 }
 
 
+
 .post-title a:hover {
   text-decoration: underline;
 }
@@ -413,3 +414,32 @@ a.social-link:hover {
 
 
 /* Update Styling */
+.post-titles {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 20px;
+}
+
+.card {
+  padding: 5px;
+}
+
+.update-delete {
+  display: flex;
+  gap: 10px;
+  justify-content: end;
+
+}
+
+.admin-options {
+  margin-top: 10px;
+}
+
+a.logo {
+  color: black;
+}
+
+a.social-link {
+  color: black;
+}

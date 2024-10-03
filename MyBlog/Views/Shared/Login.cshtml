@@ -8,18 +8,20 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Admin Login</title>
+		<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
 </head>
 <body>
-		<div>
-			<form asp-action="Login" >
-				<label asp-for="Email"></label>
-				<input asp-for="Email"/>
+		<form asp-action="Login" >
+			<h2 class="p-3">User Login</h1>
+			<div class="mb-3 form-group p-5">
+				<label class="form-label" asp-for="Email"></label>
+				<input class="form-control" asp-for="Email"/>
 
-				<label asp-for="Password"></label>
-				<input asp-for="Password"/>
-			<button type="submit">Log In</button>
-			</form>
-		</div>
+				<label class="form-label" asp-for="Password"></label>
+				<input class="form-control" asp-for="Password"/>
+		<button class="btn btn-primary mt-3" type="submit">Log In</button>
+			</div>
+	</form>
 	
 </body>
 </html>

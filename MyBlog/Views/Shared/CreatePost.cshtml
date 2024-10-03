@@ -17,20 +17,14 @@ Layout = null;
 
 <div class="container">
 
-			@if(ViewBag.Message != null) 
-			{
-				<div class="alert alert-info">
-				@ViewBag.Message
-			</div>
-			}
-
 <div class="row">
+
 <form asp-action="CreatePost" method="post" enctype="multipart/form-data" >
 <h2 class="mb-3 mt-3">Create a New Blog Post</h2>
 	<div class="mb-3" asp-validation-summary="All">	
 		<div class="form-group">
 		<label class="form-label">File</label>
-		<input type="file" id="CoverImage" name="CoverImage" accept=".jpeg,.jpg,.png" class="form-control w-70" type="file" asp-for="CoverImagePath"/>
+		<input type="file" id="CoverImage" name="CoverImage" accept=".jpeg,.jpg,.png" class="form-control w-70" type="file" asp-for="CoverImage"/>
 	</div>
 	</div>
 	<div class="mb-3">	
@@ -48,7 +42,7 @@ Layout = null;
 	</div>
 	
 
-	<button type="submit">Submit</button>
+	<button class="btn btn-primary" type="submit">Submit</button>
 
 </form>
 

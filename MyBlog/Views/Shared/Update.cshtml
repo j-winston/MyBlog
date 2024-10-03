@@ -1,4 +1,4 @@
-@model MyBlog.Models.Post
+@model Post 
 @{
 	Layout = null; 
 }
@@ -9,19 +9,30 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Edit: @Model.Title</title>
+		<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
 </head>
 <body>
 
-		<div class="update-form">
+		<h1 class="pt-5 ps-5">Update Post</h1>
+		<div class="p-5 update-form">
 
-			<form asp-action="Update" method="post">
-			<div class="form-group">
-				<input asp-for="Title" type="text" value="@Model.Title">
-				<input type="file" id="CoverImage" name="CoverImage" accept=".jpeg,.jpg,.png" class="form-control w-70" type="file" asp-for="CoverImagePath"/>
-				<textarea rows="40" cols="70" asp-for="Content"></textarea>
-			</div>
-				<button type="submit">Submit</button>
+			<form asp-action="Update" method="post" enctype="multipart/form-data">
+
+				<div class="form-group mb-4">
+					<label class="form-label">Title</label>
+					<input class="mb-4 form-control form-control-lg" asp-for="Title" type="text" value="@Model.Title">
+				</div>
+
+				<input class="form-control mb-4" type="file" id="CoverImage" name="CoverImage" accept=".jpeg,.jpg,.png" class="form-control w-70" asp-for="CoverImage"/>
+				<div asp-validation-summary="All">
+					
+
+				</div>
+
+				<textarea class="form-control" rows="40" cols="70" asp-for="Content"></textarea>
+				<button class="btn btn-primary mt-4 " type="submit">Submit</button>
+
 			</form>
-</div>
+		</div>
 </body>
 </html>

@@ -96,8 +96,7 @@ namespace MyBlog.Controllers
                 return NotFound();
             }
 
-            Post? post = _context.Posts.Where(p => p.ID == id).FirstOrDefault();
-
+            Post? post = _context.Posts?.Where(p => p.ID == id).FirstOrDefault();
 
             return View(post);
 
@@ -109,8 +108,8 @@ namespace MyBlog.Controllers
         [HttpPost]
         public async Task<IActionResult> Update(Post post)
         {
-            // get original post 
-            if (post != null)
+
+            if (post != null && ModelState.IsValid)
             {
                 var postDb = _context.Posts?.Where(p => p.ID == post.ID).FirstOrDefault();
 
@@ -120,12 +119,28 @@ namespace MyBlog.Controllers
                     postDb.Content = post.Content;
                     postDb.Title = post.Title;
 
-                    CoverImagePath = post.CoverImage.FileName;
-                    CoverImage = post.CoverImage;
+                    postDb.CoverImagePath = post.CoverImage.FileName;
+                    postDb.CoverImage = post.CoverImage;
 
-                    // save changes to db 
+                    // attempt to upload image
+
+                    if (post.CoverImage == null)
+                    {
+                        Console.WriteLine(">>>>>>cover image null<<<<<<<<<<");
+                    }
+
+                    if (post.CoverImagePath == null)
+                    {
+
+                        Console.WriteLine(">>>>>>Cover image path null<<<<<<<<<<");
+                    }
+
+                    await UploadFile(post.CoverImage);
+
+                    _context.Posts?.Update(postDb);
+
                     _context.SaveChanges();
-                    Console.WriteLine($"Updated Title: {postDb.Title}");
+
                     return RedirectToAction("AdminPanel", "Account");
                 }
             }
@@ -137,7 +152,7 @@ namespace MyBlog.Controllers
 
         [Authorize]
         [HttpPost]
-        public async Task<ActionResult> UploadFile(IFormFile fileUpload)
+        public async Task<ActionResult> UploadFile(IFormFile? fileUpload)
         {
             if (fileUpload != null && fileUpload.Length > 0)
             {
@@ -150,16 +165,10 @@ namespace MyBlog.Controllers
                         await fileUpload.CopyToAsync(stream);
                     }
 
-                    ViewBag.Message = "File upload successful";
-                    return View();
                 }
 
-                ViewBag.Message = "Please upload a valid jpeg";
-
-                return View();
             }
 
-            ViewBag.Message = "No file selected";
             return View();
 
         }

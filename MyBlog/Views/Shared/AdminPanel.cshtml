@@ -5,40 +5,48 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
 	<title>Admin Panel</title>
-		<h2>@Model.User.UserName</h2>
+		<h1 class="mt-4">Admin Panel</h1>
+		<h4 class="mb-4 lead">@Model.User.UserName</h2>
 
 
 
 
 </head>
 <body>
+	
 			
 
-		<h1> Posts </h1>
+		<h1 class="pt-3"> Posts </h1>
 		<!--- There should be only a single logged in admin and Model.Posts should show all posts send id-->
-		<div class="new-post">
+		<div class="mb-4">
 			<a asp-controller="BlogPost" asp-action="CreatePost">+ Create new post</a>
-			<a asp-controller="Account" asp-action="ChangePassword">Change Password</a>
 		</div>
 
 
-		<div class="post-titles">
 
 		@foreach(var post in @Model.Posts)
 		{
+		<div class="card mb-4">
+		<div class="card-body">
 			<p>@post.Title</p>
+			<div class="update-delete">
 			<a class="update-link" asp-controller="BlogPost" asp-action="Update" asp-route-id="@post.ID">Update </a>
 			<a class="delete-link" asp-controller="BlogPost" asp-action="Delete" asp-route-id="@post.ID">Delete </a>
+			</div>
+		</div>
+
+		</div>
 		}
 
 
-		</div>
 
-		<div class="logout-link">
-			<a class="navbar-link" asp-controller="Account" asp-action="Logout">Logout</a>
-		</div>
+		<div class="admin-options">
+			<a class="btn btn-primary navbar-link" asp-controller="Account" asp-action="Logout">Logout</a>
+		<a class="btn btn-primary" asp-controller="Account" asp-action="ChangePassword">Change Password</a>
 
+		</div>
 		
 	
 </body>
