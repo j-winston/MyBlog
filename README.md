@@ -95,5 +95,8 @@ docker-compose up --build
 ### Update Post
 ![Update Post](/MyBlog/Screenshots/update-post.png)
 
+### Project Status 
+This project is no longer open to contributions. Thank you!! 
+
 
 
