@@ -80,4 +80,20 @@ docker-compose up --build
 ![Home Page](/MyBlog/Screenshots/home.png)
 
 
+### Post Details
+![Post Details](/MyBlog/Screenshots/post-details.png)
+
+
+### Admin Panel
+![Admin Panel](/MyBlog/Screenshots/admin-panel.png)
+
+
+### Login
+![Login](/MyBlog/Screenshots/login.png)
+
+
+### Update Post
+![Update Post](/MyBlog/Screenshots/update-post.png)
+
+
 
